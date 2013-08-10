@@ -1,6 +1,8 @@
-<h2> - FONTSKETCH : dev : rev2 - </h2>
+<h2> - <%= link_to("FONTSKETCH", root_path) %> : dev : rev2 - </h2>
 User Login Items | <%= render 'devise/registration_items' %> | <%= render 'devise/login_items' %>
 <br>
 Temporary User Login Items | <%= render 'devise/temp_registration_items' %> | <%= render 'devise/temp_login_items' %>
+<br>
+Sketches: | <%= link_to("Create", new_sketch_path ) %> | <%= link_to("Index", sketches_path ) %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
