@@ -1,0 +1,5 @@
+<% if temporary_user_signed_in? %>
+  <%= link_to('Logout', destroy_temporary_user_session_path, :method => :delete) %>        
+<% else %>
+  <%= link_to('Login', new_temporary_user_session_path)  %>  
+<% end %>

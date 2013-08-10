@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sketch_id: 1
+  tester_id: 1
+  eubject_id: 1
+  attribute1size: 1
+
+two:
+  sketch_id: 1
+  tester_id: 1
+  eubject_id: 1
+  attribute1size: 1
