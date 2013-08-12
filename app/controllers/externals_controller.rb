@@ -21,6 +21,7 @@ class ExternalsController < ApplicationController
   def show
     @external = External.find(params[:id])
     @tester = @external.tester
+    @internal = @tester.internal
     @subject = @external.subject
     @sketch = @subject.sketch
     @user = @sketch.user

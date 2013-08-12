@@ -10,19 +10,48 @@ Predicting results for: <%= @tester.name %>
 <br>
 
 <br>
-<span style="font-size:<%=@internal.attribute1size*10%>px;"><%= @attributes[1] %> </span>
-<span style="font-size:<%=@internal.attribute2size*10%>px;"><%= @attributes[2] %> </span>
-<span style="font-size:<%=@internal.attribute3size*10%>px;"><%= @attributes[3] %> </span>
-<br>                                                
-<span style="font-size:<%=@internal.attribute4size*10%>px;"><%= @attributes[4] %> </span>
-<span style="font-size:<%=@internal.attribute5size*10%>px;"><%= @attributes[5] %> </span>
-<span style="font-size:<%=@internal.attribute6size*10%>px;"><%= @attributes[6] %> </span>
-<br>                                                
-<span style="font-size:<%=@internal.attribute7size*10%>px;"><%= @attributes[7] %> </span>
-<span style="font-size:<%=@internal.attribute8size*10%>px;"><%= @attributes[8] %> </span>
-<span style="font-size:<%=@internal.attribute9size*10%>px;"><%= @attributes[9] %> </span>
+<div class="composite_preview">
+<span style="font-size:<%=@internal.attribute1size*5%>px;"><%= @attributes[1] %> </span>
+<span style="font-size:<%=@internal.attribute2size*5%>px;"><%= @attributes[2] %> </span>
+<span style="font-size:<%=@internal.attribute3size*5%>px;"><%= @attributes[3] %> </span>
+<br>                                              
+<span style="font-size:<%=@internal.attribute4size*5%>px;"><%= @attributes[4] %> </span>
+<span style="font-size:<%=@internal.attribute5size*5%>px;"><%= @attributes[5] %> </span>
+<span style="font-size:<%=@internal.attribute6size*5%>px;"><%= @attributes[6] %> </span>
+<br>                                               
+<span style="font-size:<%=@internal.attribute7size*5%>px;"><%= @attributes[7] %> </span>
+<span style="font-size:<%=@internal.attribute8size*5%>px;"><%= @attributes[8] %> </span>
+<span style="font-size:<%=@internal.attribute9size*5%>px;"><%= @attributes[9] %> </span>
+</div>
 <br>
 
 <br>
+<% if @external.finalized? %>
+Showing Comparison:
+<br>
+External-Test Taken By: <%= @external.tester.name %>
+<br>
+Showing Results For: <%= @external.subject.name %>
+<br>
+
+<br>
+<div class="composite_preview">
+<span style="font-size:<%=@external.attribute1size*5%>px;"><%= @attributes[1] %> </span>
+<span style="font-size:<%=@external.attribute2size*5%>px;"><%= @attributes[2] %> </span>
+<span style="font-size:<%=@external.attribute3size*5%>px;"><%= @attributes[3] %> </span>
+<br>                                            
+<span style="font-size:<%=@external.attribute4size*5%>px;"><%= @attributes[4] %> </span>
+<span style="font-size:<%=@external.attribute5size*5%>px;"><%= @attributes[5] %> </span>
+<span style="font-size:<%=@external.attribute6size*5%>px;"><%= @attributes[6] %> </span>
+<br>                                         
+<span style="font-size:<%=@external.attribute7size*5%>px;"><%= @attributes[7] %> </span>
+<span style="font-size:<%=@external.attribute8size*5%>px;"><%= @attributes[8] %> </span>
+<span style="font-size:<%=@external.attribute9size*5%>px;"><%= @attributes[9] %> </span>
+</div>
+<% else %>
+<div class="composite_preview">
+Corresponding External Test Results Will Automatically Appear Here Once Test is Finished
+</div>
+<% end %>
 
 <p>Find me in app/views/internals/show.html.erb</p>
