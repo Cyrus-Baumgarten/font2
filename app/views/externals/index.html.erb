@@ -1,0 +1,30 @@
+<h1>Externals#index</h1>
+<% unless @external.finalized? %>
+	Welcome to FontSketch:
+	<br>
+
+	<br>
+	<strong><%= @user.name %></strong> has commishined this test to see how you and your co-workers view <strong><%= @subject.name %></strong> based on these attributes:
+	<br>
+
+	<br>
+	<% @attributes.each do |key, value| %>
+		<% unless key == 9 %>
+			<%= "#{value}, " %>
+		<% else %>
+			<%= "#{value}." %>
+		<% end %>
+	<% end %>
+	<br>
+
+	<br>
+	You will be grading these attributes in realtion to eachother via a visual representation, you only have to take one test, it should only take a few minutes, and you can adjust the test as much as you like before you finalize the results:
+	<br>
+
+	<br>
+	<%= link_to("Click Here To Take Your Test", edit_external_path(@external)) %>
+<% else %>
+	Congratulations, you are done with your font-sketch!
+<% end %>
+
+<p>Find me in app/views/externals/index.html.erb</p>

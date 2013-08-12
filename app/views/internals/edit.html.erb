@@ -1,0 +1,46 @@
+<h1>Internals#edit</h1>
+
+Test issued by: <%= @user.name %> | Test issued to: <%= @subject.name %> | Predicting results for: <%= @tester.name %>
+<br>
+
+<br>
+<strong>Instructions:</strong> use the sliders  to change the corresponding attributes below to match the values you feel <strong><%= @tester.name %></strong> would fill out if he were to grade your attributes, then once you're done, scroll to the bottom of the page and finalize your results
+<br>
+
+<br>
+<%= form_for @internal do |f| %>
+
+	<%= f.range_field(:attribute1size, min: 1, max: 10, step: 1) %>
+	<%= f.range_field(:attribute2size, min: 1, max: 10, step: 1) %>
+	<%= f.range_field(:attribute3size, min: 1, max: 10, step: 1) %>
+	<%= f.range_field(:attribute4size, min: 1, max: 10, step: 1) %>
+	<%= f.range_field(:attribute5size, min: 1, max: 10, step: 1) %>
+	<%= f.range_field(:attribute6size, min: 1, max: 10, step: 1) %>
+	<%= f.range_field(:attribute7size, min: 1, max: 10, step: 1) %>
+	<%= f.range_field(:attribute8size, min: 1, max: 10, step: 1) %>
+	<%= f.range_field(:attribute9size, min: 1, max: 10, step: 1) %>
+	<br>
+	<%= f.submit "Update" %> <%= link_to "back to tests", internals_path %>
+	<br>
+	<span style="font-size:<%=@internal.attribute1size*10%>px;"><%= @attributes[1] %> </span>
+	<span style="font-size:<%=@internal.attribute2size*10%>px;"><%= @attributes[2] %> </span>
+	<span style="font-size:<%=@internal.attribute3size*10%>px;"><%= @attributes[3] %> </span>
+	<br>                                                
+	<span style="font-size:<%=@internal.attribute4size*10%>px;"><%= @attributes[4] %> </span>
+	<span style="font-size:<%=@internal.attribute5size*10%>px;"><%= @attributes[5] %> </span>
+	<span style="font-size:<%=@internal.attribute6size*10%>px;"><%= @attributes[6] %> </span>
+	<br>                                                
+	<span style="font-size:<%=@internal.attribute7size*10%>px;"><%= @attributes[7] %> </span>
+	<span style="font-size:<%=@internal.attribute8size*10%>px;"><%= @attributes[8] %> </span>
+	<span style="font-size:<%=@internal.attribute9size*10%>px;"><%= @attributes[9] %> </span>
+	<br>
+	
+	<br>
+	Check this box to finalize these results then click update, this action cannont be undone <%= f.check_box(:finalized, checked_value: true, unchecked_value: false, class: "big_check_box") %>	
+	<br>
+
+<% end %>
+
+
+
+<p>Find me in app/views/internals/edit.html.erb</p>

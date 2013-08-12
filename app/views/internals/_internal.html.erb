@@ -1,0 +1,21 @@
+<% unless internal.finalized? %><br>
+
+	<br>
+	Id: <%= internal.id %>
+	<br>
+	Testing For: <%= internal.tester.name %>
+	<br>
+	Status:
+	<% if internal.created_at == internal.updated_at %>
+		not taken
+	<% else %>
+		pending finalization
+	<% end %>
+	<br>
+	<%= link_to "Take Test", edit_internal_path(internal) %>
+	<br>
+
+	<br>
+	------------------------------
+
+<% end %>

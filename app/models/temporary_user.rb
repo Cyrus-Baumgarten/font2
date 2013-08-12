@@ -6,5 +6,5 @@ class TemporaryUser < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :code, :relationship
+  attr_accessible :code, :relationship, :name
 end

@@ -1,0 +1,6 @@
+<% if tester_signed_in? %>
+	LOGGED IN AS: <%= current_tester.name %> | 
+  <%= link_to('Logout', destroy_tester_session_path, :method => :delete) %>        
+<% else %>
+  <%= link_to('Login', new_tester_session_path)  %>  
+<% end %>

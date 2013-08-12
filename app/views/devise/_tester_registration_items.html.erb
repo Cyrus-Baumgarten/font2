@@ -1,0 +1,5 @@
+<% if tester_signed_in? %>
+  <%= link_to('Edit registration', edit_tester_registration_path) %>
+<% else %>
+  <%= link_to('Register', new_tester_registration_path)  %>
+<% end %>
