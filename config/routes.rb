@@ -1,11 +1,22 @@
 Rev2::Application.routes.draw do
-  devise_for :temporary_users
+  get "externals/index"
+  get "externals/show"
+  get "externals/edit"
+  get "externals/update"
+  devise_for :testers
+  devise_for :subjects
   devise_for :users
+  get "bundle", to: "bundles#new"
+  post "bundles/make"
   get "static_pages/landing"
   get "static_pages/home"
   get "static_pages/index"
   root 'static_pages#home'
   resources :sketches
+  #nest non restful sketch actions here so you can pull from params
+  resources :internals
+  resources :externals
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

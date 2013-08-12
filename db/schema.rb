@@ -11,21 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130809234251) do
+ActiveRecord::Schema.define(version: 20130811011459) do
 
   create_table "externals", force: true do |t|
     t.integer  "sketch_id"
     t.integer  "tester_id"
     t.integer  "subject_id"
-    t.integer  "attribute1size"
-    t.integer  "attribute2size"
-    t.integer  "attribute3size"
-    t.integer  "attribute4size"
-    t.integer  "attribute5size"
-    t.integer  "attribute6size"
-    t.integer  "attribute7size"
-    t.integer  "attribute8size"
-    t.integer  "attribute9size"
+    t.integer  "number"
+    t.boolean  "finalized",      default: false
+    t.integer  "attribute1size", default: 5
+    t.integer  "attribute2size", default: 5
+    t.integer  "attribute3size", default: 5
+    t.integer  "attribute4size", default: 5
+    t.integer  "attribute5size", default: 5
+    t.integer  "attribute6size", default: 5
+    t.integer  "attribute7size", default: 5
+    t.integer  "attribute8size", default: 5
+    t.integer  "attribute9size", default: 5
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,15 +36,17 @@ ActiveRecord::Schema.define(version: 20130809234251) do
     t.integer  "sketch_id"
     t.integer  "tester_id"
     t.integer  "subject_id"
-    t.integer  "attribute1size"
-    t.integer  "attribute2size"
-    t.integer  "attribute3size"
-    t.integer  "attribute4size"
-    t.integer  "attribute5size"
-    t.integer  "attribute6size"
-    t.integer  "attribute7size"
-    t.integer  "attribute8size"
-    t.integer  "attribute9size"
+    t.integer  "number"
+    t.boolean  "finalized",      default: false
+    t.integer  "attribute1size", default: 5
+    t.integer  "attribute2size", default: 5
+    t.integer  "attribute3size", default: 5
+    t.integer  "attribute4size", default: 5
+    t.integer  "attribute5size", default: 5
+    t.integer  "attribute6size", default: 5
+    t.integer  "attribute7size", default: 5
+    t.integer  "attribute8size", default: 5
+    t.integer  "attribute9size", default: 5
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -200,11 +204,6 @@ ActiveRecord::Schema.define(version: 20130809234251) do
   end
 
   create_table "subjects", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "temporary_users", force: true do |t|
     t.string   "email",                              default: "", null: false
     t.string   "encrypted_password",     limit: 128, default: "", null: false
     t.string   "reset_password_token"
@@ -215,20 +214,35 @@ ActiveRecord::Schema.define(version: 20130809234251) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "code"
+  end
+
+  add_index "subjects", ["email"], name: "index_subjects_on_email", unique: true
+  add_index "subjects", ["reset_password_token"], name: "index_subjects_on_reset_password_token", unique: true
+
+  create_table "testers", force: true do |t|
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",     limit: 128, default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name"
     t.string   "code"
     t.string   "relationship"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  add_index "temporary_users", ["email"], name: "index_temporary_users_on_email", unique: true
-  add_index "temporary_users", ["reset_password_token"], name: "index_temporary_users_on_reset_password_token", unique: true
-
-  create_table "testers", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "testers", ["email"], name: "index_testers_on_email", unique: true
+  add_index "testers", ["reset_password_token"], name: "index_testers_on_reset_password_token", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                              default: "", null: false

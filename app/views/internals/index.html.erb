@@ -1,0 +1,23 @@
+<h1>Internals#index</h1>
+
+
+<% unless @completedcount == @internals.count %>
+	Here are the attributes you will be graded on:
+	<br>
+
+	<br>
+	<% @attributes.each do |key, value| %>
+		<%= "#{key} : #{value}" %>
+		<br>
+	<% end %>
+	<br>
+
+	<br>
+	Showing all your internal tests
+	<br>
+	<%= render @internals %>
+<% else %>
+	Congratulations, you are done with your font-sketch!
+<% end %>
+
+<p>Find me in app/views/internals/index.html.erb</p>

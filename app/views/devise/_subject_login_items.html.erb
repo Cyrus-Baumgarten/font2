@@ -1,0 +1,6 @@
+<% if subject_signed_in? %>
+	LOGGED IN AS: <%= current_subject.name %> | 
+  <%= link_to('Logout', destroy_subject_session_path, :method => :delete) %>        
+<% else %>
+  <%= link_to('Login', new_subject_session_path)  %>  
+<% end %>

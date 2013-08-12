@@ -30,5 +30,91 @@ Login_code: <%= @subject.code %>
 <br>
 
 <br>
+Internal Tests Completed: <%= @completedinternalcount %> out of <%= @internals.count %>
+<br>
+<% if @completedinternalcount > 0 %>
+	Composite Previw - <a href=#>click to open analyzer</a>
+	<br>
+	
+	<br>
+	<div class="composite_preview">
+		<span style="font-size:<%=@internal_attribute_1_mean*10%>px;"><%= @sketch.attribute1 %> </span>
+		<span style="font-size:<%=@internal_attribute_2_mean*10%>px;"><%= @sketch.attribute2 %> </span>
+		<span style="font-size:<%=@internal_attribute_3_mean*10%>px;"><%= @sketch.attribute3 %> </span>
+		<br>                                                  
+		<span style="font-size:<%=@internal_attribute_4_mean*10%>px;"><%= @sketch.attribute4 %> </span>
+		<span style="font-size:<%=@internal_attribute_5_mean*10%>px;"><%= @sketch.attribute5 %> </span>
+		<span style="font-size:<%=@internal_attribute_6_mean*10%>px;"><%= @sketch.attribute6 %> </span>
+		<br>                                                  
+		<span style="font-size:<%=@internal_attribute_7_mean*10%>px;"><%= @sketch.attribute7 %> </span>
+		<span style="font-size:<%=@internal_attribute_8_mean*10%>px;"><%= @sketch.attribute8 %> </span>
+		<span style="font-size:<%=@internal_attribute_9_mean*10%>px;"><%= @sketch.attribute9 %> </span>
+	</div>
+<% end %>
+<br>
+
+<br>
+External Tests Completed: <%= @completedexternalcount %> out of <%= @externals.count %>
+<br>
+<% if @completedexternalcount > 0 %>
+	Composite Previw - <a href=#>click to open analyzer</a>
+	<br>
+	
+	<br>
+	<div class="composite_preview">
+		<span style="font-size:<%=@external_attribute_1_mean*10%>px;"><%= @sketch.attribute1 %> </span>
+		<span style="font-size:<%=@external_attribute_2_mean*10%>px;"><%= @sketch.attribute2 %> </span>
+		<span style="font-size:<%=@external_attribute_3_mean*10%>px;"><%= @sketch.attribute3 %> </span>
+		<br>                                                 
+		<span style="font-size:<%=@external_attribute_4_mean*10%>px;"><%= @sketch.attribute4 %> </span>
+		<span style="font-size:<%=@external_attribute_5_mean*10%>px;"><%= @sketch.attribute5 %> </span>
+		<span style="font-size:<%=@external_attribute_6_mean*10%>px;"><%= @sketch.attribute6 %> </span>
+		<br>                                                
+		<span style="font-size:<%=@external_attribute_7_mean*10%>px;"><%= @sketch.attribute7 %> </span>
+		<span style="font-size:<%=@external_attribute_8_mean*10%>px;"><%= @sketch.attribute8 %> </span>
+		<span style="font-size:<%=@external_attribute_9_mean*10%>px;"><%= @sketch.attribute9 %> </span>
+	</div>
+<% end %>
+<br>
+
+<br>
+list of testers:
+<br>
+<% @externals.each do |external| %>
+<br>
+Name: <%= external.tester.name %>
+<br>
+Relationship: <%= external.tester.relationship.capitalize %>
+<br>
+Email: <%= external.tester.email %>
+<br>
+Login: <%= external.tester.code %>
+<br>
+Internal Test | Status: 
+<% if external.tester.internal.finalized? %>
+	Completed | <%= link_to "View", internal_path(external.tester.internal)%>
+<% else %>
+	Not Completed
+<% end %>
+<br>
+External Test | Status:
+<% if external.finalized? %> 
+	Completed | <%= link_to "View", external_path(external) %>
+<% else %>
+	Not Completed
+<% end %>
+
+<br>
+--------------------------------------
+<br>
+
+<br>
+<% end %>
+<br>
+
+<br>
+<%= link_to "Delete", @sketch, method: :delete %>
+</br>
+
 
 <p>Find me in app/views/sketches/show.html.erb</p>
