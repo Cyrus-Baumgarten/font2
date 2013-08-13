@@ -4,7 +4,7 @@ Rev2::Application.routes.draw do
   devise_for :users
   get "bundle", to: "bundles#new"
   post "bundles/make"
-  get "static_pages/landing"
+  get "landing", to: "static_pages#landing"
   get "static_pages/home"
   get "static_pages/index"
   root 'static_pages#home'
