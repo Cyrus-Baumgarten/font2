@@ -33,7 +33,7 @@ Login_code: <%= @subject.code %>
 Internal Tests Completed: <%= @completedinternalcount %> out of <%= @internals.count %>
 <br>
 <% if @completedinternalcount > 0 %>
-	Composite Previw - <a href=#>click to open analyzer</a>
+	Composite Previw - <%= link_to "Open Analyzer", sketch_analyze_path(@sketch) %>
 	<br>
 	
 	<br>
@@ -57,7 +57,7 @@ Internal Tests Completed: <%= @completedinternalcount %> out of <%= @internals.c
 External Tests Completed: <%= @completedexternalcount %> out of <%= @externals.count %>
 <br>
 <% if @completedexternalcount > 0 %>
-	Composite Previw - <a href=#>click to open analyzer</a>
+	Composite Previw - <%= link_to "Open Analyzer", sketch_analyze_path(@sketch) %>
 	<br>
 	
 	<br>

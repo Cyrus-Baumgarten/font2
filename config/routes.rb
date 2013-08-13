@@ -1,8 +1,4 @@
 Rev2::Application.routes.draw do
-  get "externals/index"
-  get "externals/show"
-  get "externals/edit"
-  get "externals/update"
   devise_for :testers
   devise_for :subjects
   devise_for :users
@@ -12,7 +8,9 @@ Rev2::Application.routes.draw do
   get "static_pages/home"
   get "static_pages/index"
   root 'static_pages#home'
-  resources :sketches
+  resources :sketches do
+    get "analyze", to: "analyzers#view"
+  end
   #nest non restful sketch actions here so you can pull from params
   resources :internals
   resources :externals

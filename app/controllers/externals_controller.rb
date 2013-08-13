@@ -6,16 +6,9 @@ class ExternalsController < ApplicationController
     @sketch = @external.sketch
     @subject = @sketch.subject
     @user = @sketch.user
-    @attributes = {
-      1 => @sketch.attribute1,
-      2 => @sketch.attribute2,
-      3 => @sketch.attribute3,
-      4 => @sketch.attribute4,
-      5 => @sketch.attribute5,
-      6 => @sketch.attribute6,
-      7 => @sketch.attribute7,
-      8 => @sketch.attribute8,
-      9 => @sketch.attribute9 }
+    attributes
+      #parent method in Application Controller
+      #returns @attributes hash
   end
 
   def show
@@ -25,16 +18,9 @@ class ExternalsController < ApplicationController
     @subject = @external.subject
     @sketch = @subject.sketch
     @user = @sketch.user
-    @attributes = {
-      1 => @sketch.attribute1,
-      2 => @sketch.attribute2,
-      3 => @sketch.attribute3,
-      4 => @sketch.attribute4,
-      5 => @sketch.attribute5,
-      6 => @sketch.attribute6,
-      7 => @sketch.attribute7,
-      8 => @sketch.attribute8,
-      9 => @sketch.attribute9 }
+    attributes
+      #parent method in Application Controller
+      #returns @attributes hash
   end
 
   def edit
@@ -43,16 +29,9 @@ class ExternalsController < ApplicationController
     @subject = @external.subject
     @sketch = @subject.sketch
     @user = @sketch.user
-    @attributes = {
-      1 => @sketch.attribute1,
-      2 => @sketch.attribute2,
-      3 => @sketch.attribute3,
-      4 => @sketch.attribute4,
-      5 => @sketch.attribute5,
-      6 => @sketch.attribute6,
-      7 => @sketch.attribute7,
-      8 => @sketch.attribute8,
-      9 => @sketch.attribute9 }
+    attributes
+      #parent method in Application Controller
+      #returns @attributes hash
   end
 
   def update

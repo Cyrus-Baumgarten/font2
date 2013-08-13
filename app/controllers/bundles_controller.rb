@@ -17,22 +17,22 @@ class BundlesController < ApplicationController
       name = name_string.to_sym
       email = email_string.to_sym
       code = generator
-      #creates a new devise tester model
-      @tester = Tester.new
-      @tester.name = params[:bundle][name]
-      @tester.email = params[:bundle][email]
-      @tester.code = code
-      @tester.password = code
-      @tester.password_confirmation = code
-      if index <= 5
-        @tester.relationship = "subordinate"
-      elsif index > 5 && index <= 10
-        @tester.relationship = "peer"
-      else
-        @tester.relationship = "superior"
-      end
-      #if tester is valid then it will create a new external and internal, making sure the bundler doesn't create a test without a user
-      if @tester.save
+      unless params[:bundle][email].empty? || params[:bundle][name].empty?
+        #creates a new devise tester model
+        @tester = Tester.new
+        @tester.name = params[:bundle][name]
+        @tester.email = params[:bundle][email]
+        @tester.code = code
+        @tester.password = code
+        @tester.password_confirmation = code
+        if index <= 5
+          @tester.relationship = "subordinate"
+        elsif index > 5 && index <= 10
+          @tester.relationship = "peer"
+        else
+          @tester.relationship = "superior"
+        end
+        #if tester is valid then it will create a new external and internal, making sure the bundler doesn't create a test without a user
         #then creates a new internal test and associates the sketch, tester and subject
         @internal = Internal.new
         @internal.subject = @subject
@@ -54,17 +54,6 @@ class BundlesController < ApplicationController
     
     redirect_to internals_path
     
-  end
-  
-  private
-  def generator
-    a = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    output = []
-    20.times do
-    	output.push(rand(1..9).to_s)
-      output.push(a[rand(1..26)])
-    end
-    output.join
-  end
+  end  
   
 end

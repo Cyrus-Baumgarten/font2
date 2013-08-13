@@ -5,16 +5,9 @@ class InternalsController < ApplicationController
     @sketch = @subject.sketch
     @internals = @sketch.internals.to_a
     @user = @sketch.user
-    @attributes = {
-      1 => @sketch.attribute1,
-      2 => @sketch.attribute2,
-      3 => @sketch.attribute3,
-      4 => @sketch.attribute4,
-      5 => @sketch.attribute5,
-      6 => @sketch.attribute6,
-      7 => @sketch.attribute7,
-      8 => @sketch.attribute8,
-      9 => @sketch.attribute9 }
+    attributes
+      #parent method in Application Controller
+      #returns @attributes hash
     
     @completedcount = 0
     @internals.each do |internal|
@@ -31,16 +24,9 @@ class InternalsController < ApplicationController
     @subject = @internal.subject
     @sketch = @subject.sketch
     @user = @sketch.user
-    @attributes = {
-      1 => @sketch.attribute1,
-      2 => @sketch.attribute2,
-      3 => @sketch.attribute3,
-      4 => @sketch.attribute4,
-      5 => @sketch.attribute5,
-      6 => @sketch.attribute6,
-      7 => @sketch.attribute7,
-      8 => @sketch.attribute8,
-      9 => @sketch.attribute9 }
+    attributes
+      #parent method in Application Controller
+      #returns @attributes hash
   end
 
   def edit
@@ -49,16 +35,9 @@ class InternalsController < ApplicationController
     @subject = @internal.subject
     @sketch = @subject.sketch
     @user = @sketch.user
-    @attributes = {
-      1 => @sketch.attribute1,
-      2 => @sketch.attribute2,
-      3 => @sketch.attribute3,
-      4 => @sketch.attribute4,
-      5 => @sketch.attribute5,
-      6 => @sketch.attribute6,
-      7 => @sketch.attribute7,
-      8 => @sketch.attribute8,
-      9 => @sketch.attribute9 }
+    attributes
+      #parent method in Application Controller
+      #returns @attributes hash
   end
 
   def update

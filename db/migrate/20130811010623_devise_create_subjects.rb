@@ -17,7 +17,7 @@ class DeviseCreateSubjects < ActiveRecord::Migration
       t.string :code
     end
 
-    add_index :subjects, :email,                :unique => true
+    add_index :subjects, :email,                :unique => false
     add_index :subjects, :reset_password_token, :unique => true
     # add_index :subjects, :confirmation_token,   :unique => true
     # add_index :subjects, :unlock_token,         :unique => true

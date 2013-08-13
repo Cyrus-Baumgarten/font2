@@ -18,7 +18,7 @@ class DeviseCreateTesters < ActiveRecord::Migration
       t.string :relationship
     end
 
-    add_index :testers, :email,                :unique => true
+    add_index :testers, :email,                :unique => false
     add_index :testers, :reset_password_token, :unique => true
     # add_index :testers, :confirmation_token,   :unique => true
     # add_index :testers, :unlock_token,         :unique => true
