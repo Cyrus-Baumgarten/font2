@@ -1,418 +1,574 @@
-<br>
-Sketch id: <%= @sketch.id %>
-<br>
-Sketch Issued By: <%= @user.name %>
-<br>
-Sketch Issued To: <%= @subject.name %>
-<br>
-Attributes:
-<% @attributes.each do |key,value| %>
-	<% unless key == 9 %>
-		<%= "#{value.capitalize}, "%>
-	<% else %>
-		<%= "#{value.capitalize}." %>
-	<% end %>
-<% end %>
-<br>
-
-<br>
-First, Whole Comparison:
-<br>
-<%= @completedinternalcount %> out of <%= @internals.count %> Internal Tests Completed
-<br>
-<%= @completedexternalcount %> out of <%= @externals.count %>	External Tests Completed
-<br>
-
-<br>
-<% if @completedinternalcount > 0 %>
-	<div class="composite_preview">
-		- INTERNAL COMPOSITE - 
-		<br>
-		<span style="font-size:<%=@internal_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-		<span style="font-size:<%=@internal_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-		<span style="font-size:<%=@internal_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-		<br>                                                 
-		<span style="font-size:<%=@internal_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-		<span style="font-size:<%=@internal_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-		<span style="font-size:<%=@internal_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-		<br>                                                 
-		<span style="font-size:<%=@internal_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-		<span style="font-size:<%=@internal_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-		<span style="font-size:<%=@internal_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
+<div class="orange_stripe">
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<div class="grey_sidebar">
+					This is your dashboard
+					<br>
+					<br>
+					Here you can view and manage your sketches
+				</div>
+			</div>
+			<div class="span9">
+				<div class="black_heading">
+					<h2>Sketch Status</h2>
+				</div>
+				<div class="white_section_box">
+					<%= @completedexternalcount %> out of <%= @externals.count %>	External Tests Completed
+					<br>
+					<%= @completedinternalcount %> out of <%= @internals.count %> Internal Tests Completed
+				</div>
+				<div class="black_heading">
+					<h2>External Composite (Entire Testing Group)</h2>
+				</div>
+				<% if @completedexternalcount > 0 %>
+					<div class="white_section_box">
+						<span style="font-size:<%=@external_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %> </span>
+						<span style="font-size:<%=@external_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %> </span>
+						<span style="font-size:<%=@external_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %> </span>
+						<br>                                                  
+						<span style="font-size:<%=@external_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %> </span>
+						<span style="font-size:<%=@external_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %> </span>
+						<span style="font-size:<%=@external_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %> </span>
+						<br>                                                  
+						<span style="font-size:<%=@external_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %> </span>
+						<span style="font-size:<%=@external_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %> </span>
+						<span style="font-size:<%=@external_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %> </span>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Preview will be available once at least one External test has been completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>Internal Composite (Entire Testing Group)</h2>
+				</div>
+				<% if @completedinternalcount > 0 %>
+					<div class="white_section_box">
+						<span style="font-size:<%=@internal_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %> </span>
+						<span style="font-size:<%=@internal_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %> </span>
+						<span style="font-size:<%=@internal_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %> </span>
+						<br>                                                  
+						<span style="font-size:<%=@internal_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %> </span>
+						<span style="font-size:<%=@internal_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %> </span>
+						<span style="font-size:<%=@internal_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %> </span>
+						<br>                                                  
+						<span style="font-size:<%=@internal_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %> </span>
+						<span style="font-size:<%=@internal_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %> </span>
+						<span style="font-size:<%=@internal_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %> </span>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Preview will be available once at least one internal test has been completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>Breakdown By Word (Entire Testing Group)</h2>
+				</div>
+				<% if @completedinternalcount > 0 and @completedexternalcount > 0 %>
+					<div class="white_section_box">
+						<table class="word_by_word">
+							<tr>
+								<td class="header left">
+									External
+								</td>
+								<td class="header right">
+									Internal
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@external_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@internal_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %></span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Word-by-Word breakdown will be available after at least one Internal Test and External Test Have Been Completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>External Composite (Subordinates Only)</h2>
+				</div>
+				<% if @subordinate_completedexternals_count > 0 %>
+					<div class="white_section_box">
+						<span style="font-size:<%=@subordinate_external_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %> </span>
+						<span style="font-size:<%=@subordinate_external_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %> </span>
+						<span style="font-size:<%=@subordinate_external_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %> </span>
+						<br>                                                              
+						<span style="font-size:<%=@subordinate_external_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %> </span>
+						<span style="font-size:<%=@subordinate_external_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %> </span>
+						<span style="font-size:<%=@subordinate_external_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %> </span>
+						<br>                                                              
+						<span style="font-size:<%=@subordinate_external_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %> </span>
+						<span style="font-size:<%=@subordinate_external_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %> </span>
+						<span style="font-size:<%=@subordinate_external_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %> </span>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Preview will be available once at least one External test has been completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>Internal Composite (Subordinates Only)</h2>
+				</div>
+				<% if @subordinate_completedinternals_count > 0 %>
+					<div class="white_section_box">
+						<span style="font-size:<%=@subordinate_internal_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %> </span>
+						<span style="font-size:<%=@subordinate_internal_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %> </span>
+						<span style="font-size:<%=@subordinate_internal_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %> </span>
+						<br>                                                              
+						<span style="font-size:<%=@subordinate_internal_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %> </span>
+						<span style="font-size:<%=@subordinate_internal_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %> </span>
+						<span style="font-size:<%=@subordinate_internal_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %> </span>
+						<br>                                                              
+						<span style="font-size:<%=@subordinate_internal_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %> </span>
+						<span style="font-size:<%=@subordinate_internal_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %> </span>
+						<span style="font-size:<%=@subordinate_internal_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %> </span>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Preview will be available once at least one internal test has been completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>Breakdown By Word (Subordinates Only)</h2>
+				</div>
+				<% if @subordinate_completedinternals_count > 0 and @subordinate_completedexternals_count > 0 %>
+					<div class="white_section_box">
+						<table class="word_by_word">
+							<tr>
+								<td class="header left">
+									External
+								</td>
+								<td class="header right">
+									Internal
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@subordinate_external_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %></span>
+								</td>
+								<td class="right">
+									<span style="font-size:<%=@subordinate_internal_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %></span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Word-by-Word breakdown will be available after at least one Internal Test and External Test Have Been Completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>External Composite (Peers Only)</h2>
+				</div>
+				<% if @peer_completedexternals_count > 0 %>
+					<div class="white_section_box">
+						<span style="font-size:<%=@peer_external_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %> </span>
+						<span style="font-size:<%=@peer_external_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %> </span>
+						<span style="font-size:<%=@peer_external_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %> </span>
+						<br>                                                   
+						<span style="font-size:<%=@peer_external_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %> </span>
+						<span style="font-size:<%=@peer_external_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %> </span>
+						<span style="font-size:<%=@peer_external_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %> </span>
+						<br>                                                   
+						<span style="font-size:<%=@peer_external_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %> </span>
+						<span style="font-size:<%=@peer_external_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %> </span>
+						<span style="font-size:<%=@peer_external_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %> </span>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Preview will be available once at least one External test has been completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>Internal Composite (Peers Only)</h2>
+				</div>
+				<% if @peer_completedinternals_count > 0 %>
+					<div class="white_section_box">
+						<span style="font-size:<%=@peer_internal_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %> </span>
+						<span style="font-size:<%=@peer_internal_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %> </span>
+						<span style="font-size:<%=@peer_internal_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %> </span>
+						<br>                                                   
+						<span style="font-size:<%=@peer_internal_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %> </span>
+						<span style="font-size:<%=@peer_internal_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %> </span>
+						<span style="font-size:<%=@peer_internal_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %> </span>
+						<br>                                                   
+						<span style="font-size:<%=@peer_internal_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %> </span>
+						<span style="font-size:<%=@peer_internal_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %> </span>
+						<span style="font-size:<%=@peer_internal_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %> </span>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Preview will be available once at least one internal test has been completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>Breakdown By Word (Peers Only)</h2>
+				</div>
+				<% if @peer_completedinternals_count > 0 and @peer_completedexternals_count > 0 %>
+					<div class="white_section_box">
+						<table class="word_by_word">
+							<tr>
+								<td class="header left">
+									External
+								</td>
+								<td class="header right">
+									Internal
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@peer_external_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@peer_internal_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@peer_external_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %></span>
+								</td>                       
+								<td class="right">          
+									<span style="font-size:<%=@peer_internal_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %></span>
+								</td>                       
+							</tr>                         
+							<tr>                          
+								<td class="left">           
+									<span style="font-size:<%=@peer_external_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@peer_internal_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@peer_external_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@peer_internal_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@peer_external_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@peer_internal_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@peer_external_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@peer_internal_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@peer_external_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %></span>
+								</td>                       
+								<td class="right">           
+									<span style="font-size:<%=@peer_internal_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@peer_external_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@peer_internal_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@peer_external_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@peer_internal_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %></span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Word-by-Word breakdown will be available after at least one Internal Test and External Test Have Been Completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>External Composite (Superiors Only)</h2>
+				</div>
+				<% if @superior_completedexternals_count > 0 %>
+					<div class="white_section_box">
+						<span style="font-size:<%=@superior_external_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %> </span>
+						<span style="font-size:<%=@superior_external_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %> </span>
+						<span style="font-size:<%=@superior_external_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %> </span>
+						<br>                                               
+						<span style="font-size:<%=@superior_external_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %> </span>
+						<span style="font-size:<%=@superior_external_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %> </span>
+						<span style="font-size:<%=@superior_external_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %> </span>
+						<br>                                               
+						<span style="font-size:<%=@superior_external_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %> </span>
+						<span style="font-size:<%=@superior_external_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %> </span>
+						<span style="font-size:<%=@superior_external_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %> </span>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Preview will be available once at least one External test has been completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>Internal Composite (Superiors Only)</h2>
+				</div>
+				<% if @superior_completedinternals_count > 0 %>
+					<div class="white_section_box">
+						<span style="font-size:<%=@superior_internal_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %> </span>
+						<span style="font-size:<%=@superior_internal_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %> </span>
+						<span style="font-size:<%=@superior_internal_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %> </span>
+						<br>                                               
+						<span style="font-size:<%=@superior_internal_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %> </span>
+						<span style="font-size:<%=@superior_internal_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %> </span>
+						<span style="font-size:<%=@superior_internal_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %> </span>
+						<br>                                               
+						<span style="font-size:<%=@superior_internal_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %> </span>
+						<span style="font-size:<%=@superior_internal_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %> </span>
+						<span style="font-size:<%=@superior_internal_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %> </span>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Preview will be available once at least one internal test has been completed
+					</div>
+				<% end %>
+				<div class="black_heading">
+					<h2>Breakdown By Word (Superiors Only)</h2>
+				</div>
+				<% if @superior_completedinternals_count > 0 and @superior_completedexternals_count > 0 %>
+					<div class="white_section_box">
+						<table class="word_by_word">
+							<tr>
+								<td class="header left">
+									External
+								</td>
+								<td class="header right">
+									Internal
+								</td>
+							</tr>
+							<tr>
+								<td class="left">
+									<span style="font-size:<%=@superior_external_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@superior_internal_attribute_1_mean*7%>px;"><%= @sketch.attribute1 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@superior_external_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %></span>
+								</td>                       
+								<td class="right">          
+									<span style="font-size:<%=@superior_internal_attribute_2_mean*7%>px;"><%= @sketch.attribute2 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@superior_external_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@superior_internal_attribute_3_mean*7%>px;"><%= @sketch.attribute3 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@superior_external_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@superior_internal_attribute_4_mean*7%>px;"><%= @sketch.attribute4 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@superior_external_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@superior_internal_attribute_5_mean*7%>px;"><%= @sketch.attribute5 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@superior_external_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@superior_internal_attribute_6_mean*7%>px;"><%= @sketch.attribute6 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@superior_external_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %></span>
+								</td>                       
+								<td class="right">          
+									<span style="font-size:<%=@superior_internal_attribute_7_mean*7%>px;"><%= @sketch.attribute7 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@superior_external_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@superior_internal_attribute_8_mean*7%>px;"><%= @sketch.attribute8 %></span>
+								</td>                        
+							</tr>                          
+							<tr>                           
+								<td class="left">            
+									<span style="font-size:<%=@superior_external_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %></span>
+								</td>                        
+								<td class="right">           
+									<span style="font-size:<%=@superior_internal_attribute_9_mean*7%>px;"><%= @sketch.attribute9 %></span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				<% else %>
+					<div class="white_section_box">
+						Word-by-Word breakdown will be available after at least one Internal Test and External Test Have Been Completed
+					</div>
+				<% end %>
+			</div>
+		</div>
 	</div>
-<% else %>
-	<div class="composite_preview">
-		Preview will be available once at least one internal test has been completed
-	</div>
-<% end %>
-<% if @completedexternalcount > 0 %>
-	<div class="composite_preview">
-		- EXTERNAL COMPOSITE -
-		<br>
-		<span style="font-size:<%=@external_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-		<span style="font-size:<%=@external_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-		<span style="font-size:<%=@external_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-		<br>                                                 
-		<span style="font-size:<%=@external_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-		<span style="font-size:<%=@external_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-		<span style="font-size:<%=@external_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-		<br>                                                 
-		<span style="font-size:<%=@external_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-		<span style="font-size:<%=@external_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-		<span style="font-size:<%=@external_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	</div>
-<% else %>
-	<div class="composite_preview">
-		Preview will be available once at least one External test has been completed
-	</div>
-<% end %>
-<br>
-
-<br>
-<% if @completedinternalcount > 0 and @completedexternalcount > 0 %>
-	Breakdown By Word
-	<br>
-	<br>
-	- INTERNAL - | - EXTERNAL -
-	<br>
-	<span style="font-size:<%=@internal_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span> | 
-	<span style="font-size:<%=@external_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-	<br>
-	<span style="font-size:<%=@internal_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span> | 
-	<span style="font-size:<%=@external_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-	<br>
-	<span style="font-size:<%=@internal_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span> | 
-	<span style="font-size:<%=@external_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-	<br>
-	<span style="font-size:<%=@internal_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span> | 
-	<span style="font-size:<%=@external_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-	<br>
-	<span style="font-size:<%=@internal_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span> | 
-	<span style="font-size:<%=@external_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-	<br>
-	<span style="font-size:<%=@internal_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span> | 
-	<span style="font-size:<%=@external_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-	<br>
-	<span style="font-size:<%=@internal_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span> | 
-	<span style="font-size:<%=@external_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-	<br>
-	<span style="font-size:<%=@internal_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span> | 
-	<span style="font-size:<%=@external_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-	<br>
-	<span style="font-size:<%=@internal_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span> | 
-	<span style="font-size:<%=@external_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	<br>
-
-	<br>
-<% else %>
-	Word-by-Word breakdown will be available after at least one Internal Test and External Test Have Been Completed
-<% end %>
-<br>
-
-<br>
-Subordinates Only
-<br>
-
-<br>
-Showing Only Test Results From or For:
-<% @subordinate_completedinternals.each do |internal| %>
-	<% unless internal == @subordinate_completedinternals[-1] %>
-		<%= "#{internal.tester.name}, " %>
-	<% else %>
-		<%= "and #{internal.tester.name}." %>
-	<% end %>
-<% end %>
-<br>
-
-<br>
-<% if @subordinate_completedinternals_count > 0 %>
-	<div class="composite_preview">
-		- SUBORDINATE INTERNAL COMPOSITE - 
-		<br>
-		<span style="font-size:<%=@subordinate_internal_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-		<span style="font-size:<%=@subordinate_internal_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-		<span style="font-size:<%=@subordinate_internal_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-		<br>                                                
-		<span style="font-size:<%=@subordinate_internal_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-		<span style="font-size:<%=@subordinate_internal_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-		<span style="font-size:<%=@subordinate_internal_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-		<br>                                                
-		<span style="font-size:<%=@subordinate_internal_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-		<span style="font-size:<%=@subordinate_internal_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-		<span style="font-size:<%=@subordinate_internal_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	</div>
-<% else %>
-	<div class="composite_preview">
-		Preview will be available once at least one internal test has been completed
-	</div>
-<% end %>
-<% if @subordinate_completedexternals_count > 0 %>
-	<div class="composite_preview">
-		- SUBORDINATE EXTERNAL COMPOSITE -
-		<br>
-		<span style="font-size:<%=@subordinate_external_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-		<span style="font-size:<%=@subordinate_external_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-		<span style="font-size:<%=@subordinate_external_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-		<br>                                               
-		<span style="font-size:<%=@subordinate_external_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-		<span style="font-size:<%=@subordinate_external_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-		<span style="font-size:<%=@subordinate_external_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-		<br>                                                
-		<span style="font-size:<%=@subordinate_external_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-		<span style="font-size:<%=@subordinate_external_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-		<span style="font-size:<%=@subordinate_external_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	</div>
-<% else %>
-	<div class="composite_preview">
-		Preview will be available once at least one External test has been completed
-	</div>
-<% end %>
-<br>
-
-<br>
-<% if @subordinate_completedinternals_count > 0 and @subordinate_completedexternals_count > 0 %>
-	Breakdown By Word
-	<br>
-	
-	<br>
-	- SUBORDINATE INTERNAL - | - SUBORDINATE EXTERNAL -
-	<br>
-	<span style="font-size:<%=@subordinate_internal_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-	<br>                       
-	<span style="font-size:<%=@subordinate_internal_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-	<br>                       
-	<span style="font-size:<%=@subordinate_internal_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-	<br>                       
-	<span style="font-size:<%=@subordinate_internal_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-	<br>                       
-	<span style="font-size:<%=@subordinate_internal_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-	<br>                       
-	<span style="font-size:<%=@subordinate_internal_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-	<br>                       
-	<span style="font-size:<%=@subordinate_internal_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-	<br>                       
-	<span style="font-size:<%=@subordinate_internal_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-	<br>                       
-	<span style="font-size:<%=@subordinate_internal_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span> | 
-	<span style="font-size:<%=@subordinate_external_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	<br>
-
-	<br>
-<% else %>
-	Word-by-Word breakdown will be available after at least one Internal Test and External Test Have Been Completed
-<% end %>
-<br>
-
-<br>
-Peers Only
-<br>
-
-<br>
-Showing Only Test Results From or For:
-<% @peer_completedinternals.each do |internal| %>
-	<% unless internal == @peer_completedinternals[-1] %>
-		<%= "#{internal.tester.name}, " %>
-	<% else %>
-		<%= "and #{internal.tester.name}." %>
-	<% end %>
-<% end %>
-<br>
-
-<br>
-<% if @peer_completedinternals_count > 0 %>
-	<div class="composite_preview">
-		- PEER INTERNAL COMPOSITE - 
-		<br>
-		<span style="font-size:<%=@peer_internal_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-		<span style="font-size:<%=@peer_internal_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-		<span style="font-size:<%=@peer_internal_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-		<br>                                     
-		<span style="font-size:<%=@peer_internal_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-		<span style="font-size:<%=@peer_internal_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-		<span style="font-size:<%=@peer_internal_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-		<br>                                     
-		<span style="font-size:<%=@peer_internal_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-		<span style="font-size:<%=@peer_internal_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-		<span style="font-size:<%=@peer_internal_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	</div>
-<% else %>
-	<div class="composite_preview">
-		Preview will be available once at least one internal test has been completed
-	</div>
-<% end %>
-<% if @peer_completedexternals_count > 0 %>
-	<div class="composite_preview">
-		- PEER EXTERNAL COMPOSITE -
-		<br>
-		<span style="font-size:<%=@peer_external_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-		<span style="font-size:<%=@peer_external_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-		<span style="font-size:<%=@peer_external_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-		<br>                                    
-		<span style="font-size:<%=@peer_external_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-		<span style="font-size:<%=@peer_external_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-		<span style="font-size:<%=@peer_external_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-		<br>                                     
-		<span style="font-size:<%=@peer_external_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-		<span style="font-size:<%=@peer_external_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-		<span style="font-size:<%=@peer_external_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	</div>
-<% else %>
-	<div class="composite_preview">
-		Preview will be available once at least one External test has been completed
-	</div>
-<% end %>
-<br>
-
-<br>
-<% if @peer_completedinternals_count > 0 and @peer_completedexternals_count > 0 %>
-	Breakdown By Word
-	<br>
-	
-	<br>
-	- PEER INTERNAL - | - PEER EXTERNAL -
-	<br>
-	<span style="font-size:<%=@peer_internal_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-	<br>                       
-	<span style="font-size:<%=@peer_internal_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-	<br>                       
-	<span style="font-size:<%=@peer_internal_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-	<br>                       
-	<span style="font-size:<%=@peer_internal_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-	<br>                       
-	<span style="font-size:<%=@peer_internal_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-	<br>                       
-	<span style="font-size:<%=@peer_internal_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-	<br>                       
-	<span style="font-size:<%=@peer_internal_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-	<br>                       
-	<span style="font-size:<%=@peer_internal_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-	<br>                       
-	<span style="font-size:<%=@peer_internal_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span> | 
-	<span style="font-size:<%=@peer_external_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	<br>
-
-	<br>
-<% else %>
-	Word-by-Word breakdown will be available after at least one Internal Test and External Test Have Been Completed
-<% end %>
-<br>
-
-<br>
-Superiors Only
-<br>
-
-<br>
-Showing Only Test Results From or For:
-<% @superior_completedinternals.each do |internal| %>
-	<% unless internal == @superior_completedinternals[-1] %>
-		<%= "#{internal.tester.name}, " %>
-	<% else %>
-		<%= "and #{internal.tester.name}." %>
-	<% end %>
-<% end %>
-<br>
-
-<br>
-<% if @superior_completedinternals_count > 0 %>
-	<div class="composite_preview">
-		- SUPERIOR INTERNAL COMPOSITE - 
-		<br>
-		<span style="font-size:<%=@superior_internal_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-		<span style="font-size:<%=@superior_internal_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-		<span style="font-size:<%=@superior_internal_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-		<br>                                 
-		<span style="font-size:<%=@superior_internal_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-		<span style="font-size:<%=@superior_internal_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-		<span style="font-size:<%=@superior_internal_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-		<br>                                 
-		<span style="font-size:<%=@superior_internal_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-		<span style="font-size:<%=@superior_internal_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-		<span style="font-size:<%=@superior_internal_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	</div>
-<% else %>
-	<div class="composite_preview">
-		Preview will be available once at least one internal test has been completed
-	</div>
-<% end %>
-<% if @superior_completedexternals_count > 0 %>
-	<div class="composite_preview">
-		- SUPERIOR EXTERNAL COMPOSITE -
-		<br>
-		<span style="font-size:<%=@superior_external_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-		<span style="font-size:<%=@superior_external_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-		<span style="font-size:<%=@superior_external_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-		<br>                                
-		<span style="font-size:<%=@superior_external_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-		<span style="font-size:<%=@superior_external_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-		<span style="font-size:<%=@superior_external_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-		<br>                                 
-		<span style="font-size:<%=@superior_external_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-		<span style="font-size:<%=@superior_external_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-		<span style="font-size:<%=@superior_external_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	</div>
-<% else %>
-	<div class="composite_preview">
-		Preview will be available once at least one External test has been completed
-	</div>
-<% end %>
-<br>
-
-<br>
-<% if @superior_completedinternals_count > 0 and @superior_completedexternals_count > 0 %>
-	Breakdown By Word
-	<br>
-	
-	<br>
-	- SUPERIOR INTERNAL - | - SUPERIOR EXTERNAL -
-	<br>
-	<span style="font-size:<%=@superior_internal_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_1_mean*5%>px;"><%= @sketch.attribute1 %> </span>
-	<br>                       
-	<span style="font-size:<%=@superior_internal_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_2_mean*5%>px;"><%= @sketch.attribute2 %> </span>
-	<br>                       
-	<span style="font-size:<%=@superior_internal_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_3_mean*5%>px;"><%= @sketch.attribute3 %> </span>
-	<br>                       
-	<span style="font-size:<%=@superior_internal_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_4_mean*5%>px;"><%= @sketch.attribute4 %> </span>
-	<br>                       
-	<span style="font-size:<%=@superior_internal_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_5_mean*5%>px;"><%= @sketch.attribute5 %> </span>
-	<br>                       
-	<span style="font-size:<%=@superior_internal_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_6_mean*5%>px;"><%= @sketch.attribute6 %> </span>
-	<br>                       
-	<span style="font-size:<%=@superior_internal_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_7_mean*5%>px;"><%= @sketch.attribute7 %> </span>
-	<br>                       
-	<span style="font-size:<%=@superior_internal_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_8_mean*5%>px;"><%= @sketch.attribute8 %> </span>
-	<br>                       
-	<span style="font-size:<%=@superior_internal_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span> | 
-	<span style="font-size:<%=@superior_external_attribute_9_mean*5%>px;"><%= @sketch.attribute9 %> </span>
-	<br>
-
-	<br>
-<% else %>
-	Word-by-Word breakdown will be available after at least one Internal Test and External Test Have Been Completed
-<% end %>
-<br>
+</div>
 <h1>Analyzers#view</h1>
 <p>Find me in app/views/analyzers/view.html.erb</p>
