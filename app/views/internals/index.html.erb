@@ -1,23 +1,39 @@
-<h1>Internals#index</h1>
-
-
-<% unless @completedcount == @internals.count %>
-	Here are the attributes you will be graded on:
-	<br>
-
-	<br>
-	<% @attributes.each do |key, value| %>
-		<%= "#{key} : #{value}" %>
-		<br>
-	<% end %>
-	<br>
-
-	<br>
-	Showing all your internal tests
-	<br>
-	<%= render @internals %>
-<% else %>
-	Congratulations, you are done with your font-sketch!
-<% end %>
+<div class="orange_stripe">
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<div class="grey_sidebar">
+					This is your dashboard
+					<br>
+					<br>
+					Here you can view and manage your sketches
+				</div>
+			</div>
+			<div class="span9">
+				<% unless @completedcount == @internals.count %>
+					<div class="black_heading">
+						<h2>Your Attributes</h2>
+					</div>
+					<div class="white_section_box">	
+						<div class="center">			
+							<%= @attributes[1] %>, <%= @attributes[2] %>, <%= @attributes[3] %>, <%= @attributes[4] %>, <%= @attributes[5] %>, <%= @attributes[6] %>, <%= @attributes[7] %>, <%= @attributes[8] %> and <%= @attributes[9] %> 
+						</div>
+					</div>
+					<div class="black_heading">
+						<h2>Your Internal (self) Tests</h2>
+					</div>
+					<%= render @internals %>
+				<% else %>
+					<div class="black_heading">
+						<h2>
+							Congratulations, you are done with your font-sketch!
+						</h2>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 
 <p>Find me in app/views/internals/index.html.erb</p>
+<h1>Internals#index</h1>

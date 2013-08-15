@@ -1,43 +1,55 @@
-<h1>Sketches#new</h1>
-
-<%= form_for(:make_sketch, url: { controller: "sketches", action: "create" }) do |f| %>
-
-	First, enter recipiant's name
-	<br>
-	<%= f.text_field :name %>
-	<br>
-	
-	<br>
-	Then, their email address:
-	<br>
-	<%= f.text_field :email %>
-	<br>
-	
-	<br>
-	Now, Enter The 9 Attributes You Want to Have This Person Rated By
-	<br>
-	<%= f.text_field :attribute1, placeholder: "truthiness" %>
-	<br>
-	<%= f.text_field :attribute2, placeholder: "truthiness" %>
-	<br>
-	<%= f.text_field :attribute3, placeholder: "truthiness" %>
-	<br>
-	<%= f.text_field :attribute4, placeholder: "truthiness" %>
-	<br>
-	<%= f.text_field :attribute5, placeholder: "truthiness" %>
-	<br>
-	<%= f.text_field :attribute6, placeholder: "truthiness" %>
-	<br>
-	<%= f.text_field :attribute7, placeholder: "truthiness" %>
-	<br>
-	<%= f.text_field :attribute8, placeholder: "truthiness" %>
-	<br>
-	<%= f.text_field :attribute9, placeholder: "truthiness" %>
-	<br>
-	
-	<br>
-	<%= f.submit "submit" %>
-
-<% end %>
+<div class="orange_stripe">
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<div class="grey_sidebar">
+					This is your dashboard
+					<br>
+					<br>
+					Here you can view and manage your sketches
+				</div>
+			</div>
+			<div class="span9">
+				<div class="white_section_box">
+					<h1>Sketches#new</h1>
+					<%= form_for(:make_sketch, url: { controller: "sketches", action: "create" }) do |f| %>
+						First, enter recipiant's name
+						<br>
+						<%= f.text_field :name %>
+						<br>
+						<br>
+						Then, their email address:
+						<br>
+						<%= f.text_field :email %>
+						<br>
+						<br>
+						Now, Enter The 9 Attributes You Want to Have This Person Rated By
+						<br>
+						<%= f.text_field :attribute1, placeholder: "truthiness" %>
+						<br>
+						<%= f.text_field :attribute2, placeholder: "truthiness" %>
+						<br>
+						<%= f.text_field :attribute3, placeholder: "truthiness" %>
+						<br>
+						<%= f.text_field :attribute4, placeholder: "truthiness" %>
+						<br>
+						<%= f.text_field :attribute5, placeholder: "truthiness" %>
+						<br>
+						<%= f.text_field :attribute6, placeholder: "truthiness" %>
+						<br>
+						<%= f.text_field :attribute7, placeholder: "truthiness" %>
+						<br>
+						<%= f.text_field :attribute8, placeholder: "truthiness" %>
+						<br>
+						<%= f.text_field :attribute9, placeholder: "truthiness" %>
+						<br>
+						<br>
+						<%= f.submit "submit" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <p>Find me in app/views/sketches/new.html.erb</p>

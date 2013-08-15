@@ -1,30 +1,51 @@
-<h1>Externals#index</h1>
-<% unless @external.finalized? %>
-	Welcome to FontSketch:
-	<br>
-
-	<br>
-	<strong><%= @user.name %></strong> has commishined this test to see how you and your co-workers view <strong><%= @subject.name %></strong> based on these attributes:
-	<br>
-
-	<br>
-	<% @attributes.each do |key, value| %>
-		<% unless key == 9 %>
-			<%= "#{value}, " %>
-		<% else %>
-			<%= "#{value}." %>
-		<% end %>
-	<% end %>
-	<br>
-
-	<br>
-	You will be grading these attributes in realtion to eachother via a visual representation, you only have to take one test, it should only take a few minutes, and you can adjust the test as much as you like before you finalize the results:
-	<br>
-
-	<br>
-	<%= link_to("Click Here To Take Your Test", edit_external_path(@external)) %>
-<% else %>
-	Congratulations, you are done with your font-sketch!
-<% end %>
-
+<div class="orange_stripe">
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<div class="grey_sidebar">
+					This is your dashboard
+					<br>
+					<br>
+					Here you can view and manage your sketches
+				</div>
+			</div>
+			<div class="span9">
+				<% unless @external.finalized? %>
+					<div class="black_heading">
+						<h2>Welcome To FontSketch</h2>
+					</div>
+					<div class="white_section_box">
+						<strong><%= @user.name %></strong> has commishined this test to see how you and your co-workers view <strong><%= @subject.name %></strong> based on these attributes:
+						<br>
+						<br>
+						<% @attributes.each do |key, value| %>
+							<% unless key == 9 %>
+								<%= "#{value}, " %>
+							<% else %>
+								<%= "#{value}." %>
+							<% end %>
+						<% end %>
+						<br>
+						<br>
+						You will be grading these attributes in realtion to eachother via a visual representation, you only have to take one test, it should only take a few minutes, and you can adjust the test as much as you like before you finalize the results:
+						<br>
+					</div>
+					<div class="black_heading">
+						<h2>Enter Test</h2>
+					</div>
+					<%= link_to edit_external_path(@external) do %>
+						<div class="white_button_full_length">
+							Click Here To Take Your Test
+						</div>
+					<% end %>
+				<% else %>
+					<div class="black_heading">
+						<h2>Congratulations, you are done with your font-sketch!</h2>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 <p>Find me in app/views/externals/index.html.erb</p>
+<h1>Externals#index</h1>

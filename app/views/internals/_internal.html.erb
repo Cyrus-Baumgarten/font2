@@ -1,21 +1,16 @@
-<% unless internal.finalized? %><br>
-
-	<br>
-	Id: <%= internal.id %>
-	<br>
-	Testing For: <%= internal.tester.name %>
-	<br>
-	Status:
-	<% if internal.created_at == internal.updated_at %>
-		not taken
-	<% else %>
-		pending finalization
+<% unless internal.finalized? %>
+	<%= link_to edit_internal_path(internal) do %>
+		<div class="white_button_full_length">
+			Predicting Results For: <strong><%= internal.tester.name %></strong>
+			<br>
+			
+			<br>
+			Status:
+			<% if internal.created_at == internal.updated_at %>
+				<strong>Not Taken</strong>
+			<% else %>
+				<strong>Pending Finalization</strong>
+			<% end %>
+		</div>
 	<% end %>
-	<br>
-	<%= link_to "Take Test", edit_internal_path(internal) %>
-	<br>
-
-	<br>
-	------------------------------
-
 <% end %>

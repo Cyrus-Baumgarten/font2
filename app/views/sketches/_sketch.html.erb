@@ -1,10 +1,6 @@
-<br>
-
-<br>
-TEST LIST
-<br>
-ID: <%= sketch.id %>
-<%= link_to "view", sketch %>
-<br>
-
-<br>
+<%= link_to sketch do %>
+	<div class="white_button_full_length">
+		<h2><%= sketch.subject.name %></h2>
+		<%= sketch.attribute1.capitalize %> | <%= sketch.attribute2.capitalize %> | <%= sketch.attribute3.capitalize %> | <%= sketch.attribute4.capitalize %> | <%= sketch.attribute5.capitalize %><br><%= sketch.attribute6.capitalize %> | <%= sketch.attribute7.capitalize %> | <%= sketch.attribute8.capitalize %> | <%= sketch.attribute9.capitalize %>
+	</div>
+<% end %>

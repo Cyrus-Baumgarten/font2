@@ -1,16 +1,27 @@
-<h2> - <%= link_to("FONTSKETCH", root_path) %> : dev : rev2 - </h2>
-User Login Items | <%= render 'devise/registration_items' %> | <%= render 'devise/login_items' %>
-<br>
-Test Subjects Sign In | <%= render 'devise/subject_login_items' %>
-<br>
-Tester Sign In | <%= render 'devise/tester_login_items' %>
-<br>
-<% if user_signed_in? %>
-	Sketches: <%= link_to("Create", new_sketch_path ) %> | <%= link_to("Index", sketches_path ) %>
-	<br>
+<div class="dark_grey_stripe">
+	<div class="container">
+		<div id="header">
+			<%= link_to(root_path) do %>
+				<h1><span id="font">FONT</span><span id="sketch">SKETCH</span><span id="beta">BETA</span></h1>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<%= render 'devise/login_bar' %>
+
+<% if flash[:message] %>
+	<div class="message"><%= flash[:message] %></div>
 <% end %>
-<br>
-<div class="message"><%= flash[:message] %></div>
-<div class="error"><%= flash[:error] %></div>
-<div class="notice"><%= notice %></div>
-<div class="alert"><%= alert %></div>
+
+<% if notice %>
+	<div class="message"><%= notice %></div>
+<% end %>
+
+<% if alert %>
+	<div class="error"><%= alert %></div>
+<% end %>
+
+<% if flash[:error] %>
+	<div class="error"><%= flash[:error] %></div>
+<% end %>

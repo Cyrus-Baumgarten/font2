@@ -1,5 +1,37 @@
+<div class="orange_stripe">
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<div class="grey_sidebar">
+					This is your dashboard
+					<br>
+					<br>
+					Here you can view and manage your sketches
+				</div>
+			</div>
+			<% unless @sketches.any? %>
+				<div class="span9">
+					<div class="black_heading">
+						<h2>Looks Like You Don't Have Any Sketches</h2>
+							<%= link_to(new_sketch_path) do %>
+								<div class="grey_button">
+									Make Your First One Now
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% else %>
+				<div class="span9">
+					<div class="black_heading">
+						<h2>Your Sketches</h2>
+					</div>
+					<%= render @sketches %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 <h1>Sketches#index</h1>
-
-<%= render @sketches %>
-
 <p>Find me in app/views/sketches/index.html.erb</p>

@@ -36,6 +36,7 @@ end
 
 gem 'pg'
 
+gem 'bootstrap-sass'
 gem 'devise'
 gem 'protected_attributes'
 

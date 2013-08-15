@@ -1,76 +1,87 @@
+<div class="orange_stripe">
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<div class="grey_sidebar">
+					Hello <%= @subject.name.split[0].capitalize %>!
+					<br>
+					<br>
+					This test has been administered by <strong><%= @user.name %></strong> to see how your associates view your attributes
+				</div>
+			</div>
+			<div class="span9">
+				<div class="white_section_box">
+					<%= form_for(:bundle, url: {controller: "bundles", action: "make"}) do |f| %>
+						Please list up to 5 of your subordinate workers and their email addresses
+						<br>
+	
+						<br>
+						<%= f.text_field :name1, placeholder: "Bruce Wayne", class: "bundle_input", default: "tester one" %> 
+						<%= f.text_field :email1, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input_email"%>
+						<br>
+						<%= f.text_field :name2, placeholder: "Clark Kent", class: "bundle_input" %> 
+						<%= f.text_field :email2, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name3, placeholder: "Tony Stark", class: "bundle_input" %> 
+						<%= f.text_field :email3, placeholder: "tony_rulez@iron.mn", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name4, placeholder: "Nick Fury", class: "bundle_input" %> 
+						<%= f.text_field :email4, placeholder: "explative_removed@anger.co", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name5, placeholder: "Wade Wilson", class: "bundle_input" %> 
+						<%= f.text_field :email5, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input_email" %>
+						<br>
+	
+						<br>
+						Now list up to 5 of your peer workers and their email addresses
+						<br>
+	
+						<br>
+						<%= f.text_field :name6, placeholder: "Bruce Wayne", class: "bundle_input" %> 
+						<%= f.text_field :email6, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name7, placeholder: "Clark Kent", class: "bundle_input" %> 
+						<%= f.text_field :email7, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name8, placeholder: "Tony Stark", class: "bundle_input" %> 
+						<%= f.text_field :email8, placeholder: "tony_rulez@iron.mn", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name9, placeholder: "Nick Fury", class: "bundle_input" %> 
+						<%= f.text_field :email9, placeholder: "explative_removed@anger.co", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name10, placeholder: "Wade Wilson", class: "bundle_input" %> 
+						<%= f.text_field :email10, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input_email" %>
+						<br>
+	
+						<br>
+						And finally, list up to 5 of your superior workers and their email addresses
+						<br>
+	
+						<br>
+						<%= f.text_field :name11, placeholder: "Bruce Wayne", class: "bundle_input" %> 
+						<%= f.text_field :email11, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name12, placeholder: "Clark Kent", class: "bundle_input" %> 
+						<%= f.text_field :email12, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name13, placeholder: "Tony Stark", class: "bundle_input" %> 
+						<%= f.text_field :email13, placeholder: "tony_rulez@iron.mn", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name14, placeholder: "Nick Fury", class: "bundle_input" %> 
+						<%= f.text_field :email14, placeholder: "explative_removed@anger.co", class: "bundle_input_email" %>
+						<br>
+						<%= f.text_field :name15, placeholder: "Wade Wilson", class: "bundle_input" %> 
+						<%= f.text_field :email15, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input_email" %>
+						<br>
+	
+						<br>
+						<%= f.submit "Make Your Sketch" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <h1>Bundles#new</h1>
-
-Hello <strong><%= @subject.name %></strong>, This test has been administered by <strong><%= @user.name %></strong> to see how your associates view your attributes
-<br>
-
-<br>
-<%= form_for(:bundle, url: {controller: "bundles", action: "make"}) do |f| %>
-	<br>
-	Please list 5 of your subordinate workers and their email addresses
-	<br>
-	
-	<br>
-	<%= f.text_field :name1, placeholder: "Bruce Wayne", class: "bundle_input", default: "tester one" %> 
-	<%= f.text_field :email1, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input", default: "tester_one@test.com" %>
-	<br>
-	<%= f.text_field :name2, placeholder: "Clark Kent", class: "bundle_input" %> 
-	<%= f.text_field :email2, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name3, placeholder: "Tony Stark", class: "bundle_input" %> 
-	<%= f.text_field :email3, placeholder: "tony_rulez@iron.mn", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name4, placeholder: "Nick Fury", class: "bundle_input" %> 
-	<%= f.text_field :email4, placeholder: "explative_removed@anger.co", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name5, placeholder: "Wade Wilson", class: "bundle_input" %> 
-	<%= f.text_field :email5, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input" %>
-	<br>
-	
-	<br>
-	Now list 5 of your peer workers and their email addresses
-	<br>
-	
-	<br>
-	<%= f.text_field :name6, placeholder: "Bruce Wayne", class: "bundle_input" %> 
-	<%= f.text_field :email6, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name7, placeholder: "Clark Kent", class: "bundle_input" %> 
-	<%= f.text_field :email7, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name8, placeholder: "Tony Stark", class: "bundle_input" %> 
-	<%= f.text_field :email8, placeholder: "tony_rulez@iron.mn", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name9, placeholder: "Nick Fury", class: "bundle_input" %> 
-	<%= f.text_field :email9, placeholder: "explative_removed@anger.co", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name10, placeholder: "Wade Wilson", class: "bundle_input" %> 
-	<%= f.text_field :email10, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input" %>
-	<br>
-	
-	<br>
-	And finally, list 5 of your superior workers and their email addresses
-	<br>
-	
-	<br>
-	<%= f.text_field :name11, placeholder: "Bruce Wayne", class: "bundle_input" %> 
-	<%= f.text_field :email11, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name12, placeholder: "Clark Kent", class: "bundle_input" %> 
-	<%= f.text_field :email12, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name13, placeholder: "Tony Stark", class: "bundle_input" %> 
-	<%= f.text_field :email13, placeholder: "tony_rulez@iron.mn", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name14, placeholder: "Nick Fury", class: "bundle_input" %> 
-	<%= f.text_field :email14, placeholder: "explative_removed@anger.co", class: "bundle_input" %>
-	<br>
-	<%= f.text_field :name15, placeholder: "Wade Wilson", class: "bundle_input" %> 
-	<%= f.text_field :email15, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input" %>
-	<br>
-	
-	<br>
-	<%= f.submit "Make Your Sketch" %>
-
-<% end %>
-
 <p>Find me in app/views/bundles/new.html.erb</p>
