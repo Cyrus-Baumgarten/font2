@@ -3,10 +3,28 @@
 		<div class="row">
 			<div class="span3">
 				<div class="grey_sidebar">
-					This is your dashboard
+					<strong>Hello <%= @current_user.name.split[0].capitalize %>!</strong>
 					<br>
 					<br>
-					Here you can view and manage your sketches
+					From here on out I'm going to guide you through the FontSketch process.
+					<br>
+					<br>
+					I'll give you simple instructions on each page that will get you the feedback you're looking for as fast as possible.
+					<br>
+					<br>
+					Whenever you're signed in, this becomes your homepage. From here you can view your existing sketches. You can always get back here by clicking on the FontSketch logo.
+					<br>
+					<br>
+					Create a new sketch by using the button in the navbar next to your name.
+					<br>
+					<br>
+					Since FontSketch is in Beta, Beta notes and bugs will appear here too, you can also read the Beta Notes Page
+					<br>
+					<br>
+					FontSketch works best in Chrome and Safari, but does just fine in Firefox and IE
+					<br>
+					<br>
+					<strong>Happy Sketching!</strong>
 				</div>
 			</div>
 			<% unless @sketches.any? %>
@@ -33,5 +51,3 @@
 		</div>
 	</div>
 </div>
-<h1>Sketches#index</h1>
-<p>Find me in app/views/sketches/index.html.erb</p>

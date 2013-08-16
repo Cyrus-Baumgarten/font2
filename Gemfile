@@ -34,7 +34,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'pg'
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
 
 gem 'bootstrap-sass'
 gem 'devise'

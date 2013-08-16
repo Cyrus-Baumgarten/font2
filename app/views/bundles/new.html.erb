@@ -6,7 +6,23 @@
 					Hello <%= @subject.name.split[0].capitalize %>!
 					<br>
 					<br>
+					I'm going to guide you through the FontSketch process.
+					<br>
+					<br>
+					I'll give you simple instructions on each page that will get you finished up as fast as possible.
+					<br>
+					<br>
 					This test has been administered by <strong><%= @user.name %></strong> to see how your associates view your attributes
+					<br>
+					<br>
+					Choose up to 5 subordinate, peer and superior associates to evaluate your attributes, if you don't know who or how many people to list, discuss it with <strong><%= @user.name %></strong> before clicking "Make Your Sketch"
+					<br>
+					<br>
+					<div class="sidebar_heading">beta notes</div>
+					Due to the nature of the testing process, the ability to edit the test after it's creation was not added, make sure this list is correct before submitting, as it cannot be changed afterwards.
+					<br>
+					<br>
+					FontSketch currently has no mailing functionality, meaning that the sign-in email you provide is largely arbitrary and only used as a login handle.
 				</div>
 			</div>
 			<div class="span9">
@@ -16,20 +32,20 @@
 						<br>
 	
 						<br>
-						<%= f.text_field :name1, placeholder: "Bruce Wayne", class: "bundle_input", default: "tester one" %> 
-						<%= f.text_field :email1, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input_email"%>
+						<%= f.text_field :name1, placeholder: "Clark Kent" %> 
+						<%= f.text_field :email1, placeholder: "clark@daily_planet.net" %>
 						<br>
-						<%= f.text_field :name2, placeholder: "Clark Kent", class: "bundle_input" %> 
-						<%= f.text_field :email2, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input_email" %>
+						<%= f.text_field :name2 %> 
+						<%= f.text_field :email2 %>
 						<br>
-						<%= f.text_field :name3, placeholder: "Tony Stark", class: "bundle_input" %> 
-						<%= f.text_field :email3, placeholder: "tony_rulez@iron.mn", class: "bundle_input_email" %>
+						<%= f.text_field :name3 %> 
+						<%= f.text_field :email3 %>
 						<br>
-						<%= f.text_field :name4, placeholder: "Nick Fury", class: "bundle_input" %> 
-						<%= f.text_field :email4, placeholder: "explative_removed@anger.co", class: "bundle_input_email" %>
+						<%= f.text_field :name4 %> 
+						<%= f.text_field :email4 %>
 						<br>
-						<%= f.text_field :name5, placeholder: "Wade Wilson", class: "bundle_input" %> 
-						<%= f.text_field :email5, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input_email" %>
+						<%= f.text_field :name5 %> 
+						<%= f.text_field :email5 %>
 						<br>
 	
 						<br>
@@ -37,20 +53,20 @@
 						<br>
 	
 						<br>
-						<%= f.text_field :name6, placeholder: "Bruce Wayne", class: "bundle_input" %> 
-						<%= f.text_field :email6, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input_email" %>
+						<%= f.text_field :name6 %> 
+						<%= f.text_field :email6 %>
 						<br>
-						<%= f.text_field :name7, placeholder: "Clark Kent", class: "bundle_input" %> 
-						<%= f.text_field :email7, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input_email" %>
+						<%= f.text_field :name7 %> 
+						<%= f.text_field :email7 %>
 						<br>
-						<%= f.text_field :name8, placeholder: "Tony Stark", class: "bundle_input" %> 
-						<%= f.text_field :email8, placeholder: "tony_rulez@iron.mn", class: "bundle_input_email" %>
+						<%= f.text_field :name8 %> 
+						<%= f.text_field :email8 %>
 						<br>
-						<%= f.text_field :name9, placeholder: "Nick Fury", class: "bundle_input" %> 
-						<%= f.text_field :email9, placeholder: "explative_removed@anger.co", class: "bundle_input_email" %>
+						<%= f.text_field :name9 %> 
+						<%= f.text_field :email9 %>
 						<br>
-						<%= f.text_field :name10, placeholder: "Wade Wilson", class: "bundle_input" %> 
-						<%= f.text_field :email10, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input_email" %>
+						<%= f.text_field :name10 %> 
+						<%= f.text_field :email10 %>
 						<br>
 	
 						<br>
@@ -58,20 +74,20 @@
 						<br>
 	
 						<br>
-						<%= f.text_field :name11, placeholder: "Bruce Wayne", class: "bundle_input" %> 
-						<%= f.text_field :email11, placeholder: "not_batman@wayne_enterprises.net", class: "bundle_input_email" %>
+						<%= f.text_field :name11 %> 
+						<%= f.text_field :email11 %>
 						<br>
-						<%= f.text_field :name12, placeholder: "Clark Kent", class: "bundle_input" %> 
-						<%= f.text_field :email12, placeholder: "glasses_change_everything@krypton.com", class: "bundle_input_email" %>
+						<%= f.text_field :name12 %> 
+						<%= f.text_field :email12 %>
 						<br>
-						<%= f.text_field :name13, placeholder: "Tony Stark", class: "bundle_input" %> 
-						<%= f.text_field :email13, placeholder: "tony_rulez@iron.mn", class: "bundle_input_email" %>
+						<%= f.text_field :name13 %> 
+						<%= f.text_field :email13 %>
 						<br>
-						<%= f.text_field :name14, placeholder: "Nick Fury", class: "bundle_input" %> 
-						<%= f.text_field :email14, placeholder: "explative_removed@anger.co", class: "bundle_input_email" %>
+						<%= f.text_field :name14 %> 
+						<%= f.text_field :email14 %>
 						<br>
-						<%= f.text_field :name15, placeholder: "Wade Wilson", class: "bundle_input" %> 
-						<%= f.text_field :email15, placeholder: "deathstroke_who@shameless_ripoff.cpy", class: "bundle_input_email" %>
+						<%= f.text_field :name15 %> 
+						<%= f.text_field :email15 %>
 						<br>
 	
 						<br>
@@ -82,6 +98,3 @@
 		</div>
 	</div>
 </div>
-
-<h1>Bundles#new</h1>
-<p>Find me in app/views/bundles/new.html.erb</p>

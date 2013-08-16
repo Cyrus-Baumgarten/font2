@@ -3,53 +3,72 @@
 		<div class="row">
 			<div class="span3">
 				<div class="grey_sidebar">
-					This is your dashboard
+					Here's where you create your sketch.
 					<br>
 					<br>
-					Here you can view and manage your sketches
+					First fill out the full name and email address of the person you want to have evaluated.
+					<br>
+					<br>
+					Then pick 9 attributes that you want this person to be rated by, ideally your company's core values. If you have trouble thinking of some, there's a list at the bottom of the page.
+					<br>
+					<br>
+					<div class="sidebar_heading">beta notes</div>
+					FontSketch currently has no mailing functionality, meaning that the sign-in email you provide is largely arbitrary and only used as a login handle.
+					<br>
+					<br>
+					Due to the nature of the testing process, the ability to edit the test after it's creation was not added, if you feel another set of attributes would better suit the test, feel free to delete this test and make a new one.
+					<br>
+					<br>
+					Functionality to make several sketches for one account can be added in the future. For now, if you want to make another test for someone that's been evaluated before, just make a new sketch for them with the same email, they will get a new account and a new password, but their old data will be preserved.
 				</div>
 			</div>
 			<div class="span9">
 				<div class="white_section_box">
-					<h1>Sketches#new</h1>
 					<%= form_for(:make_sketch, url: { controller: "sketches", action: "create" }) do |f| %>
 						First, enter recipiant's name
 						<br>
-						<%= f.text_field :name %>
+						<%= f.text_field :name, placeholder: "Bruce Wayne" %>
 						<br>
 						<br>
 						Then, their email address:
 						<br>
-						<%= f.text_field :email %>
+						<%= f.text_field :email, placeholder: "bruce@wayne_enterprises.net" %>
 						<br>
 						<br>
 						Now, Enter The 9 Attributes You Want to Have This Person Rated By
 						<br>
-						<%= f.text_field :attribute1, placeholder: "truthiness" %>
+						<%= f.text_field :attribute1 %>
 						<br>
-						<%= f.text_field :attribute2, placeholder: "truthiness" %>
+						<%= f.text_field :attribute2 %>
 						<br>
-						<%= f.text_field :attribute3, placeholder: "truthiness" %>
+						<%= f.text_field :attribute3 %>
 						<br>
-						<%= f.text_field :attribute4, placeholder: "truthiness" %>
+						<%= f.text_field :attribute4 %>
 						<br>
-						<%= f.text_field :attribute5, placeholder: "truthiness" %>
+						<%= f.text_field :attribute5 %>
 						<br>
-						<%= f.text_field :attribute6, placeholder: "truthiness" %>
+						<%= f.text_field :attribute6 %>
 						<br>
-						<%= f.text_field :attribute7, placeholder: "truthiness" %>
+						<%= f.text_field :attribute7 %>
 						<br>
-						<%= f.text_field :attribute8, placeholder: "truthiness" %>
+						<%= f.text_field :attribute8 %>
 						<br>
-						<%= f.text_field :attribute9, placeholder: "truthiness" %>
+						<%= f.text_field :attribute9 %>
 						<br>
 						<br>
 						<%= f.submit "submit" %>
 					<% end %>
+					<br>
+					Try These:
+					<br>
+					<br>
+					Able, Actual, Active, Adept, Admirable, Appreciated, Atypical, Aware, Bright, Capable, Cognizant, Competent, Constructive, Contributive, Decent, Dedicated, Discerning, Discriminating, Effective, Engaging, Enterprising, Esteemed, Exceptional, Executive, Fair, Forthright, Genuine, Good, Gratifying, Honest, Helpful, Important, Industrious, Influential, Just, Level-headed, Meaningful, Mindful, Moral, Motivated, Notable, Personable, Perspicacious, Principled, Professional, Propitious, Purposeful, Valued, Qualitative, Reliable, Reputable, Resourceful, Responsible, Sedulous, Thoughtful, True, Trustworthy, Venerated, Well-disposed, Winning, Worthy.
+
+					
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
+<h1>Sketches#new</h1>
 <p>Find me in app/views/sketches/new.html.erb</p>

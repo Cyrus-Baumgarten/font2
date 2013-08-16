@@ -3,10 +3,45 @@
 		<div class="row">
 			<div class="span3">
 				<div class="grey_sidebar">
-					This is your dashboard
+					Here is your sketch
 					<br>
 					<br>
-					Here you can view and manage your sketches
+					First thing is first, have your test subject (here on referred to as "subject") go to FontSketch and sign in with his email and login code with the <div class="login_button">Subject Login</div> button on the homepage so he can choose who will be evaluating him, this will complete the Sketch creation proccess. <em>-see beta notes</em>
+					<br>
+					<br>
+					Once the Sketch is created, you will have access to all this data:
+					<br>
+					<br>
+					<div class="sidebar_heading">Sketch Status</div>
+					Here you can keep track of how many tests are completed, this will update automatically whenever one is finalized
+					<br>
+					<br>
+					<div class="sidebar_heading">External Tests</div>
+					External tests are the tests that your subjects' associates take<br><strong>("what they think")</strong>
+					<br>
+					<br>
+					<div class="sidebar_heading">Internal Tests</div>
+					Internal tests are self tests that your subject takes predicting what his associates think of him<br><strong>("what he thinks they think")</strong>
+					<br>
+					<br>
+					<div class="sidebar_heading">Data Analyzer</div>
+					Click on this to get a group by group and word by word breakdown of all your subjects' attributes<br><strong>(this is the FontSketch)</strong>
+					<br>
+					<br>
+					<div class="sidebar_heading">Sketch Previews</div>
+					Here you can see the average values of the internal and external tests from the entire testing group at a glance
+					<br>
+					<br>
+					<div class="sidebar_heading">External Testers</div>
+					Once they are chosen, a comprehensive list of the testers and their corresponding test statuses will appear here. This is also where their login information is found. Have each of the selected testers sign in with the <div class="login_button">Tester Login</div>button so they can take their tests. You can view individual tests along with comparisons as they are completed
+					<br>
+					<br>
+					<div class="sidebar_heading">beta notes</div>
+					User (manager) selection of testers can be added in the future, for now, if you wish to choose who evaluates the subject of this test, sign in with his code and email to complete the sketch creation process yourself
+					<br>
+					<br>
+					Due to the nature of the testing process, the ability to edit the test after it's creation was not added, if you feel another set of attributes would better suit the test, feel free to delete this test and make a new one.
+					<br>
 				</div>
 			</div>
 			<div class="span9">
@@ -35,12 +70,12 @@
 				<% if @completedinternalcount > 0 || @completedexternalcount > 0 %>
 					<%= link_to sketch_analyze_path(@sketch) do %>
 						<div class="white_button_full_length">
-							Open Analyzer
+							Open FontSketch
 						</div>
 					<% end %>
 				<% else %>
 						<div class="white_section_box">
-							Data Analyzer Will be Available After at Least One Test Has Been Completed
+							Data analyzer will be available after at least one test has been completed.
 						</div>
 				<% end %>
 				<div class="black_heading">
@@ -62,7 +97,7 @@
 					</div>
 					<% else %>
 						<div class="white_section_box">
-							Preview of Self Test Data Will Appear Here Once at Least one Test has Been Completed
+							Preview of self test data will appear here once at least one test has been completed
 						</div>
 					<% end %>
 					<div class="black_heading">
@@ -84,7 +119,7 @@
 						</div>
 					<% else %>
 						<div class="white_section_box">
-							Preview of External Test Data Will Appear Here Once at Least one Test has Been Completed
+							Preview of external test data will appear here once at least one test has been completed
 						</div>
 					<% end %>
 					<div class="black_heading">
@@ -147,7 +182,7 @@
 						<% end %>
 					<% else %>
 						<div class="white_section_box">
-							List Of Testers, Logins and Test Status' Will Appear Here Once <%= @subject.name.capitalize %> Finishes The Sketch Creation Process
+							List of testers, logins and test statuses will appear here once <%= @subject.name.capitalize %> finished the Sketch creation process
 						</div>
 					<% end %>
 					<br>
@@ -156,7 +191,7 @@
 					<%= link_to @sketch, method: :delete, data: { confirm: "Are You Sure You Want To Delete?"} do %>
 						<div class="delete_button">
 							<h1>Delete Sketch</h1>
-							Permantley Delete This Sketch Along With All Associated Data
+							Permanently delete this sketch along with all associated data
 						</div>
 					<% end %>
 				</div>
@@ -164,6 +199,3 @@
 		</div>
 	</div>
 </div>
-
-<p>Find me in app/views/sketches/show.html.erb</p>
-<h1>Sketches#show</h1>

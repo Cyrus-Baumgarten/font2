@@ -114,7 +114,7 @@ class SketchesController < ApplicationController
       @subject = @sketch.subject
       @subject.destroy
       @sketch.destroy
-      flash[:message] = "Sketch and All Associated Data Successfully Created"
+      flash[:message] = "Sketch and All Associated Data Successfully Deleted"
       redirect_to sketches_path
     end
   end

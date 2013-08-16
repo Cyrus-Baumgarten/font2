@@ -1,50 +1,68 @@
 <div class="grey_stripe">
 	<div class="container">
 		<div class="row">
-			<div class="span2">
-				<div class="login_button">
-					<% if user_signed_in? %>
-					  <%= link_to('Edit Account', edit_user_registration_path) %>
-					<% else %>
-					  <%= link_to('Register', new_user_registration_path)  %>
-					<% end %>
-				</div>
-			</div>
-		
-			<div class="span2">
-				<div class="login_button">
-					<% if user_signed_in? %>
-					  <%= link_to('User Logout', destroy_user_session_path) %>        
-					<% else %>
-					  <%= link_to('User Login', new_user_session_path)  %>  
-					<% end %>
-				</div>
-			</div>
-		
-			<div class="span2">
-				<div class="login_button">
-					<% if subject_signed_in? %>
-					  <%= link_to('Subject Logout', destroy_subject_session_path) %>        
-					<% else %>
-					  <%= link_to('Subject Login', new_subject_session_path)  %>  
-					<% end %>
-				</div>
-			</div>
-	
-			<div class="span2">
-				<div class="login_button">
-					<% if tester_signed_in? %>
-					  <%= link_to('Tester Logout', destroy_tester_session_path) %>        
-					<% else %>
-					  <%= link_to('Tester Login', new_tester_session_path)  %>  
-					<% end %>
-				</div>
-			</div>
-			
 			<% if user_signed_in? %>
-				<div class="span4">
+				<div class="span3">
 					<div class="login_button">
-						Sketches: <%= link_to("Create", new_sketch_path ) %> | <%= link_to("Index", sketches_path ) %>
+					  <%= current_user.name %>:
+					</div>
+				</div>
+				<div class="span3">
+					<div class="login_button">
+						<%= link_to("New Sketch", new_sketch_path ) %>
+					</div>
+				</div>
+				<div class="span3">
+					<div class="login_button">
+					  <%= link_to('Edit Account', edit_user_registration_path) %>
+					</div>
+				</div>
+				<div class="span3">
+					<div class="login_button">
+					  <%= link_to('Logout', destroy_user_session_path) %>        
+					</div>
+				</div>
+			<% elsif subject_signed_in? %>
+				<div class="span6">
+					<div class="login_button">
+					  <%= current_subject.name %>:
+					</div>
+				</div>
+				<div class="span6">
+					<div class="login_button">
+					  <%= link_to('Logout', destroy_subject_session_path) %>        
+					</div>
+				</div>
+			<% elsif tester_signed_in? %>
+				<div class="span6">
+					<div class="login_button">
+					  <%= current_tester.name %>:
+					</div>
+				</div>
+				<div class="span6">
+					<div class="login_button">
+					  <%= link_to('Logout', destroy_tester_session_path) %>        
+					</div>
+				</div>
+			<% else %>
+				<div class="span3">
+					<div class="login_button">
+					  <%= link_to('User Register', new_user_registration_path)  %>
+					</div>
+				</div>
+				<div class="span3">
+					<div class="login_button">
+					  <%= link_to('User Login', new_user_session_path)  %>  
+					</div>
+				</div>
+				<div class="span3">
+					<div class="login_button">
+					  <%= link_to('Subject Login', new_subject_session_path)  %>  
+					</div>
+				</div>
+				<div class="span3">
+					<div class="login_button">
+					  <%= link_to('Tester Login', new_tester_session_path)  %>  
 					</div>
 				</div>
 			<% end %>

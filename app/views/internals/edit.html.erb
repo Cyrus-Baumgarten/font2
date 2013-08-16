@@ -3,11 +3,33 @@
 		<div class="row">
 			<div class="span3">
 				<div class="grey_sidebar">
-					Test issued by: <%= @user.name %> | Test issued to: <%= @subject.name %> | Predicting results for: <%= @tester.name %>
+					<div class="sidebar_heading">
+						Remember
+					</div>
+					You're evaluating yourself as if you were <%= @tester.name %>
+					<br>					
 					<br>
-					
+					<div class="sidebar_heading">
+						How To Take The Test
+					</div>
+					Numbers are boring, which is why we use sliders and pictures.
 					<br>
-					<strong>Instructions:</strong> use the sliders  to change the corresponding attributes below to match the values you feel <strong><%= @tester.name %></strong> would fill out if he were to grade your attributes, then once you're done, scroll to the bottom of the page and finalize your results
+					<br>
+					A FontSketch is like a font cloud of yourself, the biggest words represent your strongest attributes, the smallest words represent your weakest, <em>and they are all relative to each other</em>
+					<br>
+					<br>
+					The default values are the baseline, leave them alone if you feel you are right in the middle, but for any values you think you are stronger or weaker in, move the corresponding sliders left and right until the attribute correctly represents you and press update to view the result - <em>see beta notes at bottom of page</em>
+					<br>
+					<br>
+					When you have what feels like an accurate picture of how <%= @tester.name %> would define your attributes you can finalize the test
+					<br>
+					<br>
+					<div class="sidebar_heading">Finalize The Test</div>
+					Make sure that the test is to your liking before you check the finalize box, as it cannot be edited afterwards. If you need more time, you can go back to the last page without finalizing the test, just leave the box unchecked and click update
+					<br>
+					<br>
+					<div class="sidebar_heading">Beta Notes</div>
+					The slider input currently only works in Safari and Chrome, if you are using a different browser and number fields show up instead of sliders, type and integer between 1 and 10 instead and the test will function the same way
 				</div>
 			</div>
 			<div class="span9">
@@ -82,7 +104,7 @@
 						<span style="font-size:<%=@internal.attribute9size*10%>px;"><%= @attributes[9] %> </span>
 					</div>
 					<div class="delete_button">
-						Check this box to finalize these results then click update, this action cannont be undone
+						Check this box to finalize these results then click update, this action cannot be undone
 						<%= f.check_box(:finalized, checked_value: true, unchecked_value: false, class: "big_check_box") %>	
 					</div>
 				<% end %>
@@ -90,5 +112,3 @@
 		</div>
 	</div>
 </div>
-<h1>Internals#edit</h1>
-<p>Find me in app/views/internals/edit.html.erb</p>
