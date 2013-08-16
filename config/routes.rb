@@ -6,7 +6,8 @@ Rev2::Application.routes.draw do
   post "bundles/make"
   get "landing", to: "static_pages#landing"
   get "static_pages/home"
-  get "static_pages/index"
+  get "about", to: "static_pages#about"
+  get "notes", to: "static_pages#notes"
   root 'static_pages#home'
   resources :sketches do
     get "analyze", to: "analyzers#view"

@@ -20,6 +20,10 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def index
+  def about
   end
+  
+  def notes
+  end
+  
 end
